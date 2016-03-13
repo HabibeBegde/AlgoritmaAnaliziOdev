@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <sys/time.h>
+#include <locale.h>
+#include <conio.h>
+
+int dizideAra(int myArray[], int size, int number){
+    int ilk=0, son, orta, sayac=0;
+    son = size-1;
+    while(ilk<=son){
+       orta=(ilk+son)/2;
+       sayac++;             
+       if(myArray[orta] < number){
+            ilk = orta + 1;
+       }else if (myArray[orta] == number){
+             printf("karsilastirma sayisi : %d\n", sayac);
+             return orta+1;
+       }else {
+             son = orta-1;
+       }
+       orta = (ilk + son)/2;
+       }
+    if(ilk>son)
+       printf("karsilastirma sayisi : %d\n", sayac);
+       return -1;      
+    }
+
+int main()
+{
+    int size,sayi, aranan;
+    printf("dizi kac elemanli olsun:");
+    fflush(stdout);
+    scanf("%d\n", &size);  
+    int dizi[size];    
+    printf("dizinin boyutu : %d\n", size); 
+    srand(time(NULL));
+    int i;
+    for(i=0; i<size; i++){
+        dizi[i]=rand()%10000;
+      //  printf("%d. sayi   %d\n", i+1, dizi[i]);            
+    }
+    //dizide siralama
+    int k,l,m;
+    for(k=0; k<(size-1); k++){
+         for(l=k; l<size; l++){
+              if(dizi[l]<dizi[k]){
+                   m=dizi[k];
+                   dizi[k]=dizi[l];
+                   dizi[l]=m;
+              }   
+         }
+    }
+    printf("aranan elemani giriniz: ");
+    scanf("%d\n", &aranan);
+    printf("aranan sayi %d. sirada bulunur \n",dizideAra(dizi,size, aranan) );
+    
+     /*          
+    int n=0;
+    while(n<10){
+         sayi=rand()%10000;
+         aranan=dizideAra(dizi,size,sayi);       
+         printf("Aranan sayi(%d) dizide %d. sirada bulunur\n",sayi,aranan);
+         n++; 
+   }*/
+   
+      system("PAUSE");
+    return EXIT_SUCCESS;
+  
+   //return 0;
+}
