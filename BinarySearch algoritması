@@ -1,0 +1,25 @@
+def binarySearch(liste, sayi):
+	    if len(liste) == 0:
+	        return False
+	    else:
+	        orta = len(liste)//2
+	        if liste[orta]==sayi:
+	          return True
+	        else:
+	          if sayi<liste[orta]:
+	            return binarySearch(liste[:orta],sayi)
+	          else:
+	            return binarySearch(liste[orta+1:],sayi)
+array1=[]
+size=int(input("dizinin boyutu ne olsun"))
+import random
+for i in range(0,size):
+    array1.append(random.randint( 1, 10000000))
+print("dizinin boyutu : ",len(array1))
+
+import time
+start_time=time.time()
+for i in range (0,10):
+    aranan=random.randint(1,1000)
+    binarySearch(array1, aranan)
+print("gecen süre : ", time.time()-start_time)
