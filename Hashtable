@@ -1,0 +1,54 @@
+import java.util.Hashtable;
+import java.util.Enumeration;
+
+package hashtable;
+
+/**
+ *
+ * @author habibe
+ */
+public class HashTable {
+
+    
+    public static void main(String[] args) {
+        Enumeration names;
+        String key;
+ 
+   //HashTable yaratma 
+        Hashtable<String, String> hashtable = new Hashtable<String, String>();
+ 
+   //HashTable'a anahtar ve değer ekleme
+      hashtable.put("A", "Apple");
+      hashtable.put("B", "Orange");
+      hashtable.put("C", "Mango");
+      hashtable.put("D", "Banana");
+      hashtable.put("E", "Grapes");
+ 
+ 
+      names = hashtable.keys();
+      while(names.hasMoreElements()) {
+          key = (String) names.nextElement();
+          System.out.println("Key: " +key+ " & Value: " + hashtable.get(key));
+      }
+      
+      // anahtar değerine göre hashtable da olup olmadığının kontrolü
+      boolean key1 = hashtable.containsKey("A");
+      System.out.println("A anahtar değeri Hashtable da var mı ?: " + key1);
+      boolean key2 = hashtable.containsKey("K");
+      System.out.println("K anahtar değeri Hashtable da var mı ? :" + key2);
+      boolean key3 = hashtable.containsKey("B");
+      System.out.println("B anahtar değeri Hashtable da var mı ? : " + key3);
+      
+      //değerine göre hashtable da olup olmadığının kontrolü
+      boolean deger1 = hashtable.containsValue("Apple");
+      System.out.println("Değeri Apple olan veri Hashtable da var mı?: "+deger1);
+      boolean deger2 = hashtable.containsValue("Strawberry");
+      System.out.println("Değeri Strawberry olan veri Hashtable da var mı?: "+deger2);
+      boolean deger3 = hashtable.containsValue("Banana");
+      System.out.println("Değeri Banana olan veri Hashtable da var mı?:"+deger3);
+ 
+ }
+}
+       
+    
+
